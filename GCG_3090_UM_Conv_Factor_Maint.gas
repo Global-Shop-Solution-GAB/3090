@@ -1,0 +1,1008 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Conversion Factor")
+gui.SS_Form1..size(2665,3765)
+gui.SS_Form1..minx(0)
+gui.SS_Form1..miny(0)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,ss_form1_unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_txtUM.create(label,"Unit of Measure",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txtUM.defaultvalue("")
+gui.SS_Form1.lbl_txtUM.controlgroup(0)
+gui.SS_Form1.txtUM.create(textbox,"",True,1800,330,0,100,335,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtUM.event(gotfocus,txtum_gotfocus)
+gui.SS_Form1.txtUM.event(lostfocus,txtum_lostfocus)
+gui.SS_Form1.txtUM.defaultvalue("")
+gui.SS_Form1.txtUM.controlgroup(0)
+gui.SS_Form1.cmd_txtUM.create(button)
+gui.SS_Form1.cmd_txtUM.caption("^")
+gui.SS_Form1.cmd_txtUM.visible(True)
+gui.SS_Form1.cmd_txtUM.size(330,330)
+gui.SS_Form1.cmd_txtUM.zorder(0)
+gui.SS_Form1.cmd_txtUM.position(1985,335)
+gui.SS_Form1.cmd_txtUM.enabled(True)
+gui.SS_Form1.cmd_txtUM.fontname("Arial")
+gui.SS_Form1.cmd_txtUM.fontsize(8)
+gui.SS_Form1.cmd_txtUM.event(click,cmd_txtum_click)
+gui.SS_Form1.cmd_txtUM.defaultvalue("")
+gui.SS_Form1.cmd_txtUM.controlgroup(0)
+gui.SS_Form1.lbl_txtHourPerUM.create(label,"Hour Per (UM)",True,1800,200,1,100,750,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txtHourPerUM.defaultvalue("")
+gui.SS_Form1.lbl_txtHourPerUM.controlgroup(0)
+gui.SS_Form1.txtHourPerUM.create(textbox,"",True,1800,330,0,100,950,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtHourPerUM.event(gotfocus,txtHourPerUM_gotfocus)
+gui.SS_Form1.txtHourPerUM.event(lostfocus,txtHourPerUM_lostfocus)
+gui.SS_Form1.txtHourPerUM.defaultvalue("")
+gui.SS_Form1.txtHourPerUM.controlgroup(0)
+gui.SS_Form1.lbl_txtTotalUM.create(label,"Total (UM)",True,1800,200,1,100,1365,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txtTotalUM.defaultvalue("")
+gui.SS_Form1.lbl_txtTotalUM.controlgroup(0)
+gui.SS_Form1.txtTotalUM.create(textbox,"",True,1800,330,0,100,1565,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtTotalUM.event(gotfocus,txttotalum_gotfocus)
+gui.SS_Form1.txtTotalUM.event(lostfocus,txttotalum_lostfocus)
+gui.SS_Form1.txtTotalUM.defaultvalue("")
+gui.SS_Form1.txtTotalUM.controlgroup(0)
+gui.SS_Form1.cmdSave.create(button)
+gui.SS_Form1.cmdSave.caption("Save")
+gui.SS_Form1.cmdSave.visible(True)
+gui.SS_Form1.cmdSave.size(1000,360)
+gui.SS_Form1.cmdSave.zorder(0)
+gui.SS_Form1.cmdSave.position(100,2715)
+gui.SS_Form1.cmdSave.enabled(True)
+gui.SS_Form1.cmdSave.fontname("Arial")
+gui.SS_Form1.cmdSave.fontsize(8)
+gui.SS_Form1.cmdSave.event(click,cmdsave_click)
+gui.SS_Form1.cmdSave.defaultvalue("")
+gui.SS_Form1.cmdSave.controlgroup(0)
+gui.SS_Form1.lbl_txtTotalHours.create(label,"Total Hours",True,1800,200,1,110,2000,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txtTotalHours.defaultvalue("")
+gui.SS_Form1.lbl_txtTotalHours.controlgroup(0)
+gui.SS_Form1.txtTotalHours.create(textbox,"",True,1800,330,0,110,2195,False,0,Arial,8,16777215,1)
+gui.SS_Form1.txtTotalHours.defaultvalue("")
+gui.SS_Form1.txtTotalHours.controlgroup(0)
+gui.SS_Form1.txtUM.tabstop(True)
+gui.SS_Form1.txtUM.tabindex(1)
+gui.SS_Form1.cmd_txtUM.tabstop(True)
+gui.SS_Form1.cmd_txtUM.tabindex(2)
+gui.SS_Form1.txtHourPerUM.tabstop(True)
+gui.SS_Form1.txtHourPerUM.tabindex(3)
+gui.SS_Form1.txtTotalUM.tabstop(True)
+gui.SS_Form1.txtTotalUM.tabindex(4)
+gui.SS_Form1.txtTotalHours.tabstop(True)
+gui.SS_Form1.txtTotalHours.tabindex(5)
+gui.SS_Form1.cmdSave.tabstop(True)
+gui.SS_Form1.cmdSave.tabindex(6)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.sRecType.Declare(String)
+Variable.Global.sRouter.Declare(String)
+Variable.Global.sSeq.Declare(String)
+Variable.Global.sJob.Declare(String)
+Variable.Global.sSuffix.Declare(String)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'8/9/19 - DD - Changed tables to align with current sql table structure (GCG_3090_CONV_ROUT & GCG_3090_CONV_WO).  Also changed UM_PER_HOUR column name to HOUR_PER_UM to align with current sql manifests.
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+V.Local.sSeq.Declare(String)
+
+
+F.ODBC.connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.puser,V.Ambient.PPass)
+
+F.Intrinsic.Control.SelectCase(V.Caller.Hook)
+	F.Intrinsic.Control.Case(11340)
+		V.Global.sRecType.Set("Router")
+		V.Global.sRouter.Set(V.Passed.008000)
+		F.Intrinsic.String.LPad(V.Passed.000111,"0",6,V.Global.sSeq)
+		F.Intrinsic.Control.CallSub(Getroutseqconv)
+		Gui.SS_Form1..show
+		V.Passed.777777.Set(1)
+	F.Intrinsic.Control.Case(11310)
+		F.Intrinsic.String.LPad(V.Passed.000111,"0",6,V.Local.sSeq)
+		F.Intrinsic.Control.CallSub(Deleteroutseqconv,"sRouter",V.Passed.008000,"sSeq",V.Local.sSeq)
+	F.Intrinsic.Control.Case(11081)
+		F.Intrinsic.Control.CallSub(Deleteroutconv,"sRouter",V.Passed.000014)
+	F.Intrinsic.Control.Case(11151)
+		F.Intrinsic.Control.CallSub(Copyrouttorout,"sFromRout",V.Passed.000003,"sToRout",V.Passed.000006)
+	F.Intrinsic.Control.Case(16650)
+		F.Intrinsic.Control.If(V.Caller.Switches,=,"N S")
+			F.Intrinsic.Control.CallSub(Deletewoconv,"sJob",V.Passed.000003,"sSuffix",V.Passed.000004)
+			F.Intrinsic.Control.CallSub(Copyrouttowo,"sJob",V.Passed.000003,"sSuffix",V.Passed.000004,"sRouter",V.Passed.000006)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Case(16773)
+		V.Global.sRecType.Set("WO")
+		V.Global.sJob.Set(V.Passed.008000)
+		V.Global.sSuffix.Set(V.Passed.008001)
+		F.Intrinsic.String.LPad(V.Passed.000001,"0",6,V.Global.sSeq)
+		F.Intrinsic.Control.CallSub(Getwoseqconv)
+		Gui.SS_Form1..show
+	F.Intrinsic.Control.Case(16776)
+		F.Intrinsic.String.LPad(V.Passed.000001,"0",6,V.Local.sSeq)
+		F.Intrinsic.Control.CallSub(Deletewoseqconv,"sJob",V.Passed.008000,"sSuffix",V.Passed.008001,"sSeq",V.Local.sSeq)
+	F.Intrinsic.Control.Case(16781)
+		F.Intrinsic.Control.CallSub(Deleteroutconv,"sRouter",V.Passed.008002)
+		F.Intrinsic.Control.CallSub(Copywotorout,"sJob",V.Passed.008000,"sSuffix",V.Passed.008001,"sRouter",V.Passed.008002)
+	F.Intrinsic.Control.Case(16081)
+		F.Intrinsic.Control.CallSub(Deletewoconv,"sJob",V.Passed.000035,"sSuffix",V.Passed.000017)
+	F.Intrinsic.Control.Case(15840)
+		F.Intrinsic.Control.CallSub(Updatejob,"sJob",V.Passed.009990,"sSuffix",V.Passed.009991,"sSeq",V.Passed.009992)
+	F.Intrinsic.Control.Case(16779)
+		V.Passed.000038.Set("Conv. Factor")
+	F.Intrinsic.Control.Case(11210)
+		V.Passed.000102.Set("Conv. Factor")
+F.Intrinsic.Control.EndSelect
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.Main.End
+
+program.sub.cmdsave_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdsave_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+V.Local.sMsg.Declare(String)
+V.Local.sSql.Declare(String)
+
+Gui.SS_Form1..Visible(False)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtUM.Text,=,"")
+	F.Intrinsic.UI.Msgbox("Please Enter a Unit of Measure")
+	Gui.SS_Form1.txtUM.SelectAll
+F.Intrinsic.Control.ElseIf(V.Screen.SS_Form1!txtHourPerUM.Text,=,"")
+	F.Intrinsic.String.Concat("Please Enter ",V.Screen.SS_Form1!lbl_txtHourPerUM.Caption,V.Local.sMsg)
+	F.Intrinsic.UI.Msgbox(V.Local.sMsg)
+	Gui.SS_Form1.txtHourPerUM.SelectAll
+F.Intrinsic.Control.ElseIf(V.Screen.SS_Form1!txtTotalUM.Text,=,"")
+	F.Intrinsic.String.Concat("Please Enter ",V.Screen.SS_Form1!lbl_txtTotalUM.Caption,V.Local.sMsg)
+	F.Intrinsic.UI.Msgbox(V.Local.sMsg)
+	Gui.SS_Form1.txtTotalUM.SelectAll
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Global.sRecType,=,"Router")
+	F.Intrinsic.Control.CallSub(Saveroutseqconv)
+	V.Passed.000118.Set(V.Screen.SS_Form1!txtTotalHours.Text)
+F.Intrinsic.Control.ElseIf(V.Global.sRecType,=,"WO")
+	F.Intrinsic.Control.CallSub(Savewoseqconv)
+	V.Passed.000014.Set(V.Screen.SS_Form1!txtTotalHours.Text)
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.CallSub(Ss_form1_unload)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdsave_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdsave_click.end
+
+program.sub.txtum_lostfocus.start
+F.Intrinsic.Control.SetErrorHandler("txtum_lostfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+V.Local.sSql.Declare(String)
+V.Local.sTemp.Declare(String)
+V.Local.sLabel.Declare(String)
+
+V.Local.sTemp.Set(V.Screen.SS_Form1!txtUM.Text)
+
+F.Intrinsic.Control.if(V.Local.sTemp,<>,"")
+	F.Intrinsic.String.UCase(V.Local.sTemp,V.Local.sTemp)
+
+	Gui.SS_Form1.txtUM.Text(V.Local.sTemp)
+
+	F.Intrinsic.String.Concat("Select CODE, DESCR From V_UM_CODES Where CODE = '",V.Local.sTemp,"'",V.Local.sSql)
+	F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+
+	F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,False)
+		F.Intrinsic.String.Concat("Hour Per ",V.ODBC.conx!rst.FieldValTrim!DESCR,V.Local.sLabel)
+		Gui.SS_Form1.lbl_txtHourPerUM.Caption(V.Local.sLabel)
+		
+		F.Intrinsic.String.Concat("Total ",V.ODBC.conx!rst.FieldValTrim!DESCR,V.Local.sLabel)
+		Gui.SS_Form1.lbl_txtTotalUM.Caption(V.Local.sLabel)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox("Invalid Unit of Measure")
+		Gui.SS_Form1.txtUM.SelectAll
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtum_lostfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.txtum_lostfocus.end
+
+program.sub.ss_form1_unload.start
+F.Intrinsic.Control.SetErrorHandler("ss_form1_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+F.ODBC.Connection!conx.Close
+F.Intrinsic.Control.End
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ss_form1_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.ss_form1_unload.end
+
+program.sub.cmd_txtum_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txtum_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+V.Local.sRet.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.sTitles.Declare(String)
+V.Local.sWidths.Declare(String)
+V.Local.sLabel.Declare(String)
+
+V.Local.sSql.Set("Select CODE, DESCR From V_UM_CODES Order By CODE")
+F.Intrinsic.String.Split("Unit of Measure*!*Description","*!*",V.local.sTitles)
+F.Intrinsic.String.Split("1000*!*2000","*!*",V.local.sWidths)
+
+F.Intrinsic.UI.Browser("Select a Unit of Measure","conx",V.Local.sSql,V.Local.sTitles,V.Local.sWidths,V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtUM.Text(V.Local.sRet(0).Trim)
+	F.Intrinsic.String.Concat("Hours Per ",V.Local.sRet(1).Trim,V.Local.sLabel)
+	Gui.SS_Form1.lbl_txtHourPerUM.Caption(V.Local.sLabel)
+	
+	F.Intrinsic.String.Concat("Total ",V.Local.sRet(1).Trim,V.Local.sLabel)
+	Gui.SS_Form1.lbl_txtTotalUM.Caption(V.Local.sLabel)
+F.Intrinsic.Control.EndIf
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txtum_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_txtum_click.end
+
+program.sub.txtHourPerUM_lostfocus.start
+F.Intrinsic.Control.SetErrorHandler("txtHourPerUM_lostfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+V.Local.sTemp.Declare(String)
+
+V.Local.sTemp.Set(V.Screen.SS_Form1!txtHourPerUM.Text)
+
+F.Intrinsic.Control.If(V.Local.sTemp,<>,"")
+	F.Intrinsic.Control.If(V.Local.sTemp.IsNumeric,=,True)
+		F.Intrinsic.String.Format(V.Local.sTemp,"###0.0000",V.Local.sTemp)
+		Gui.SS_Form1.txtHourPerUM.Text(V.Local.sTemp)
+		F.Intrinsic.Control.CallSub(Calctotalhours)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox("Value Must Be Numeric")
+		Gui.SS_Form1.txtHourPerUM.SelectAll
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtHourPerUM_lostfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.txtHourPerUM_lostfocus.end
+
+program.sub.txttotalum_lostfocus.start
+F.Intrinsic.Control.SetErrorHandler("txttotalum_lostfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+V.Local.sTemp.Declare(String)
+
+V.Local.sTemp.Set(V.Screen.SS_Form1!txtTotalUM.Text)
+
+F.Intrinsic.Control.If(V.Local.sTemp,<>,"")
+	F.Intrinsic.Control.If(V.Local.sTemp.IsNumeric,=,True)
+		F.Intrinsic.String.Format(V.Local.sTemp,"###0.0000",V.Local.sTemp)
+		Gui.SS_Form1.txtTotalUM.Text(V.Local.sTemp)
+		F.Intrinsic.Control.CallSub(Calctotalhours)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox("Value Must Be Numeric")
+		Gui.SS_Form1.txtTotalUM.SelectAll
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txttotalum_lostfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.txttotalum_lostfocus.end
+
+program.sub.txtHourPerUM_gotfocus.start
+F.Intrinsic.Control.SetErrorHandler("txtHourPerUM_gotfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+Gui.SS_Form1.txtHourPerUM.SelectAll
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtHourPerUM_gotfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.txtHourPerUM_gotfocus.end
+
+program.sub.txttotalum_gotfocus.start
+F.Intrinsic.Control.SetErrorHandler("txttotalum_gotfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+Gui.SS_Form1.txtTotalUM.SelectAll
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txttotalum_gotfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.txttotalum_gotfocus.end
+
+program.sub.txtum_gotfocus.start
+F.Intrinsic.Control.SetErrorHandler("txtum_gotfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+Gui.SS_Form1.txtUM.SelectAll
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtum_gotfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.txtum_gotfocus.end
+
+Program.Sub.CalcTotalHours.Start
+F.Intrinsic.Control.SetErrorHandler("CalcTotalHours_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'V.Local.fHourPerUM.Declare(Float)
+'V.Local.fTotalUM.Declare(Float)
+V.Local.sTotalHours.Declare(String)
+
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtHourPerUM.Text,=,"")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.ElseIf(V.Screen.SS_Form1!txtTotalUM.Text,=,"")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'V.Local.fHourPerUM.Set(V.Screen.SS_Form1!txtHourPerUM.Text)
+'V.Local.fTotalUM.Set(V.Screen.SS_Form1!txtTotalUM.Text)
+
+F.Intrinsic.Math.Mult(V.Screen.SS_Form1!txtHourPerUM.Text,V.Screen.SS_Form1!txtTotalUM.Text,V.Local.sTotalHours)
+F.Intrinsic.String.Format(V.Local.sTotalHours,"###0.00000",V.Local.sTotalHours)
+Gui.SS_Form1.txtTotalHours.Text(V.Local.sTotalHours)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CalcTotalHours_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.CalcTotalHours.End
+
+Program.Sub.SaveRoutSeqConv.Start
+F.Intrinsic.Control.SetErrorHandler("SaveRoutConv_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.String.Concat("Select * From GCG_3090_CONV_ROUT Where ROUTER = '",V.Global.sRouter,"' And SEQ = '",V.Global.sSeq,"'",V.Local.sSql)
+F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,<>,True)
+	F.ODBC.conx!rst.Set!UM(V.Screen.SS_Form1!txtUM.Text)
+	F.ODBC.conx!rst.Set!HOUR_PER_UM(V.Screen.SS_Form1!txtHourPerUM.Text)
+	F.ODBC.conx!rst.Set!TOTAL_UM(V.Screen.SS_Form1!txtTotalUM.Text)
+	F.ODBC.conx!rst.update
+F.Intrinsic.Control.Else
+	F.ODBC.conx!rst.AddNew
+	F.ODBC.conx!rst.Set!ROUTER(V.Global.sRouter)
+	F.ODBC.conx!rst.Set!SEQ(V.Global.sSeq)
+	F.ODBC.conx!rst.Set!UM(V.Screen.SS_Form1!txtUM.Text)
+	F.ODBC.conx!rst.Set!HOUR_PER_UM(V.Screen.SS_Form1!txtHourPerUM.Text)
+	F.ODBC.conx!rst.Set!TOTAL_UM(V.Screen.SS_Form1!txtTotalUM.Text)
+	F.ODBC.conx!rst.update
+F.Intrinsic.Control.EndIf
+
+F.ODBC.conx!rst.Close
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("SaveRoutConv_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.SaveRoutSeqConv.End
+
+Program.Sub.SaveWOSeqConv.Start
+F.Intrinsic.Control.SetErrorHandler("SaveWOConv_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sUM, sHourPerUM, sTotalUM
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.String.Concat("Select * From GCG_3090_CONV_WO Where JOB = '",V.Global.sJob,"' And SUFFIX = '",V.Global.sSuffix,"' And SEQ = '",V.Global.sSeq,"'",V.Local.sSql)
+F.ODBC.Connection!conx.OpenLocalRecordsetRW("rst",V.Local.sSql)
+
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,<>,True)
+	F.ODBC.conx!rst.Set!UM(V.Screen.SS_Form1!txtUM.Text)
+	F.ODBC.conx!rst.Set!HOUR_PER_UM(V.Screen.SS_Form1!txtHourPerUM.Text)
+	F.ODBC.conx!rst.Set!TOTAL_UM(V.Screen.SS_Form1!txtTotalUM.Text)
+	F.ODBC.conx!rst.update
+F.Intrinsic.Control.Else
+	F.ODBC.conx!rst.AddNew
+	F.ODBC.conx!rst.Set!JOB(V.Global.sJob)
+	F.ODBC.conx!rst.Set!SUFFIX(V.Global.sSuffix)
+	F.ODBC.conx!rst.Set!SEQ(V.Global.sSeq)
+	F.ODBC.conx!rst.Set!UM(V.Screen.SS_Form1!txtUM.Text)
+	F.ODBC.conx!rst.Set!HOUR_PER_UM(V.Screen.SS_Form1!txtHourPerUM.Text)
+	F.ODBC.conx!rst.Set!TOTAL_UM(V.Screen.SS_Form1!txtTotalUM.Text)
+	F.ODBC.conx!rst.update
+F.Intrinsic.Control.EndIf
+
+F.ODBC.conx!rst.Close
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("SaveWOConv_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.SaveWOSeqConv.End
+
+Program.Sub.CopyRoutToRout.Start
+F.Intrinsic.Control.SetErrorHandler("CopyRoutToRout_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sFromRout, sToRout
+F.Intrinsic.Control.CallSub(Deleteroutconv,"sRouter",V.Args.sToRout)
+
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.String.Concat("Insert Into GCG_3090_CONV_ROUT Select '",V.Args.sToRout,"' ROUTER, SEQ, UM, HOUR_PER_UM, TOTAL_UM From GCG_3090_CONV_ROUT Where ROUTER = '",V.Args.sFromRout,"'",V.Local.sSql)
+F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CopyRoutToRout_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.CopyRoutToRout.End
+
+Program.Sub.CopyWOToRout.Start
+F.Intrinsic.Control.SetErrorHandler("CopyWOToRout_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sJob, sSuffix, sRouter
+F.Intrinsic.Control.CallSub(Deleteroutconv,"sRouter",V.Args.sRouter)
+
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.String.Concat("Insert Into GCG_3090_CONV_ROUT Select '",V.Args.sRouter,"' ROUTER, SEQ, UM, HOUR_PER_UM, TOTAL_UM From GCG_3090_CONV_WO Where JOB = '",V.Args.sJob,"' And SUFFIX = '",V.Args.sSuffix,"'",V.Local.sSql)
+F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CopyWOToRout_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.CopyWOToRout.End
+
+Program.Sub.DeleteRoutConv.Start
+F.Intrinsic.Control.SetErrorHandler("DeleteRoutConv_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sRouter
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.String.Concat("Delete From GCG_3090_CONV_ROUT Where ROUTER = '",V.Args.sRouter,"'",V.Local.sSql)
+F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("DeleteRoutConv_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.DeleteRoutConv.End
+
+Program.Sub.DeleteWOConv.Start
+F.Intrinsic.Control.SetErrorHandler("DeleteWOConv_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sJob, sSuffix
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.String.Concat("Delete From GCG_3090_CONV_WO Where JOB = '",V.Args.sJob,"' And SUFFIX = '",V.Args.sSuffix,"'",V.Local.sSql)
+F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("DeleteWOConv_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.DeleteWOConv.End
+
+Program.Sub.DeleteRoutSeqConv.Start
+F.Intrinsic.Control.SetErrorHandler("DeleteRoutSeqConv_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sRouter, sSeq
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.String.Concat("Delete From GCG_3090_CONV_ROUT Where ROUTER = '",V.Args.sRouter,"' And SEQ = '",V.Args.sSeq,"'",V.Local.sSql)
+F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("DeleteRoutSeqConv_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.DeleteRoutSeqConv.End
+
+Program.Sub.DeleteWOSeqConv.Start
+F.Intrinsic.Control.SetErrorHandler("DeleteWOSeqConv_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sJob, sSuffix, sSeq
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.String.Concat("Delete From GCG_3090_CONV_WO Where JOB = '",V.Args.sJob,"' And SUFFIX = '",V.Args.sSuffix,"' And SEQ = '",V.Args.sSeq,"'",V.Local.sSql)
+F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("DeleteWOSeqConv_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.DeleteWOSeqConv.End
+
+Program.Sub.CopyRoutToWO.Start
+F.Intrinsic.Control.SetErrorHandler("CopyRoutToWO_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sJob, sSuffix, sRouter
+
+V.Local.sSql.Declare(String)
+V.Local.sMessage.Declare(String)
+
+'Check Company Option
+V.Local.sSql.Set("Select F_BOOLEAN From V_OP_HEADER Where ID = '401160' And SEQUENCE = '0000'")
+F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.conx!rst.FieldValTrim!F_BOOLEAN,=,"0")
+	F.Intrinsic.string.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Must have the company option 'Keep Router Sequences' turned on when using GCG_UM_Conv_Factor_Maint.gas:",V.Ambient.NewLine,"CompanyOptions(Advanced)>Manufacturing",V.local.sMessage)
+	F.Intrinsic.UI.Msgbox(V.local.sMessage)
+	F.ODBC.conx!rst.Close
+	V.Passed.777777.Set(1)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+F.ODBC.conx!rst.Close
+
+F.Intrinsic.Control.CallSub(Deletewoconv,"sJob",V.Args.sJob,"sSuffix",V.Args.sSuffix)
+
+F.Intrinsic.String.Concat("Insert Into GCG_3090_CONV_WO Select '",V.Args.sJob,"' JOB, '",V.Args.sSuffix,"' SUFFIX, SEQ, UM, HOUR_PER_UM, TOTAL_UM From GCG_3090_CONV_ROUT Where ROUTER = '",V.Args.sRouter,"'",V.Local.sSql)
+F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CopyRoutToWO_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.CopyRoutToWO.End
+
+Program.Sub.GetRoutSeqConv.Start
+F.Intrinsic.Control.SetErrorHandler("GetRoutSeqConv_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sRouter, sSeq
+
+V.Local.sSql.Declare(String)
+V.Local.sTemp.Declare(String)
+
+F.Intrinsic.String.Concat("Select CR.*, UM.DESCR From GCG_3090_CONV_ROUT CR Left Outer Join V_UM_CODES UM On UM.CODE = CR.UM Where CR.ROUTER = '",V.Global.sRouter,"' And CR.SEQ = '",V.Global.sSeq,"'",V.Local.sSql)
+F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,<>,True)
+	Gui.SS_Form1.txtUM.Text(V.ODBC.conx!rst.FieldValTrim!UM)
+	
+	F.Intrinsic.String.Concat(V.ODBC.conx!rst.FieldValTrim!DESCR," Per Hour",V.Local.sTemp)
+	Gui.SS_Form1.lbl_txtHourPerUM.Caption(V.Local.sTemp)
+	F.Intrinsic.String.Concat("Total ",V.ODBC.conx!rst.FieldValTrim!DESCR,V.Local.sTemp)
+	Gui.SS_Form1.lbl_txtTotalUM.Caption(V.Local.sTemp)
+
+	F.Intrinsic.String.Format(V.ODBC.conx!rst.FieldValTrim!HOUR_PER_UM,"###0.0000",V.Local.sTemp)
+	Gui.SS_Form1.txtHourPerUM.Text(V.Local.sTemp)
+	F.Intrinsic.String.Format(V.ODBC.conx!rst.FieldValTrim!TOTAL_UM,"###0.0000",V.Local.sTemp)
+	Gui.SS_Form1.txtTotalUM.Text(V.Local.sTemp)
+	F.Intrinsic.Control.CallSub(Calctotalhours)
+F.Intrinsic.Control.EndIf
+
+F.ODBC.conx!rst.Close
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("GetRoutSeqConv_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.GetRoutSeqConv.End
+
+Program.Sub.GetWOSeqConv.Start
+F.Intrinsic.Control.SetErrorHandler("GetWOSeqConv_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sJob, sSuffix, sSeq
+
+V.Local.sSql.Declare(String)
+V.Local.sTemp.Declare(String)
+
+F.Intrinsic.String.Concat("Select CF.*, UM.DESCR From GCG_3090_CONV_WO CF Left Outer Join V_UM_CODES UM On UM.CODE = CF.UM Where CF.JOB = '",V.Global.sJob,"' And CF.SUFFIX = '",V.Global.sSuffix,"' And CF.SEQ = '",V.Global.sSeq,"'",V.Local.sSql)
+F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,<>,True)
+	Gui.SS_Form1.txtUM.Text(V.ODBC.conx!rst.FieldValTrim!UM)
+	
+	F.Intrinsic.String.Concat(V.ODBC.conx!rst.FieldValTrim!DESCR," Per Hour",V.Local.sTemp)
+	Gui.SS_Form1.lbl_txtHourPerUM.Caption(V.Local.sTemp)
+	F.Intrinsic.String.Concat("Total ",V.ODBC.conx!rst.FieldValTrim!DESCR,V.Local.sTemp)
+	Gui.SS_Form1.lbl_txtTotalUM.Caption(V.Local.sTemp)
+
+	F.Intrinsic.String.Format(V.ODBC.conx!rst.FieldValTrim!HOUR_PER_UM,"###0.0000",V.Local.sTemp)
+	Gui.SS_Form1.txtHourPerUM.Text(V.Local.sTemp)
+	F.Intrinsic.String.Format(V.ODBC.conx!rst.FieldValTrim!TOTAL_UM,"###0.0000",V.Local.sTemp)
+	Gui.SS_Form1.txtTotalUM.Text(V.Local.sTemp)
+	F.Intrinsic.Control.CallSub(Calctotalhours)
+F.Intrinsic.Control.EndIf
+
+F.ODBC.conx!rst.Close
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("GetWOSeqConv_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.GetWOSeqConv.End
+
+Program.Sub.UpdateJob.Start
+F.Intrinsic.Control.SetErrorHandler("UpdateJob_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'Passed Args: sJob, sSuffix, sSeq
+
+V.Local.sSql.Declare(String)
+V.Local.sLabel.Declare(String)
+
+F.Intrinsic.String.Concat("Select CW.UM, UM.DESCR From GCG_3090_CONV_WO CW Left Outer Join V_UM_CODES UM On CW.UM = UM.CODE Where CW.JOB = '",V.Args.sJob,"' And CW.SUFFIX = '",V.Args.sSuffix,"' And CW.SEQ = '",V.Args.sSeq,"'",V.Local.sSql)
+F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSql)
+
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,<>,True)
+	F.Intrinsic.String.Concat("# of ",V.ODBC.conx!rst.FieldValTrim!DESCR,V.Local.sLabel)
+	F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000102,"HIDE",1)
+	F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000002,"HIDE",1)
+	F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000019,"HIDE",1)
+	V.Passed.000103.Set(V.Local.sLabel)
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000102,"HIDE",0)
+	F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000002,"HIDE",0)
+	F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000019,"HIDE",0)
+	V.Passed.000103.Set("Good Pieces")
+F.Intrinsic.Control.EndIf
+
+F.ODBC.conx!rst.Close
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("UpdateJob_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor_Maint.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.UpdateJob.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_UM_Conv_Factor_Maint$}$BSELLERS$}$4/9/2014
+${$1$}$$}$$}$8$}$16081$}$JBS019H-OK-BTN-POST-HOOK(Supervisor Job Maintenance)$}$4/9/2014 3:39:01 PM$}$(Program: JB0019GI; Screen: JBS019H)
+
+Delete all conversion factors for the passed job and suffix
+${$1$}$$}$$}$7$}$16781$}$JBS0011-MESSAGE-HOOK$}$4/9/2014 3:37:37 PM$}$(Program: JB0011GI; Screen: JBS0011)
+
+Replace all conversion factors for the passed router with the conversion factors for the passed job and suffix
+${$1$}$$}$$}$6$}$16776$}$JBS0011L-PRE-DELETE-HOOK$}$4/9/2014 3:36:43 PM$}$(Program: JB0011GI; Screen: JBS0011L)
+
+Delete the conversion factor for the passed job, suffix, and line
+${$1$}$$}$$}$5$}$16773$}$JBS0011L-SCRIPT-1-HOOK$}$4/9/2014 3:36:11 PM$}$(Program: JB0011GI; Screen: JBS0011L)
+
+Show custom conversion factor screen
+${$1$}$$}$$}$4$}$16650$}$Pre-OK Hook$}$4/9/2014 3:14:11 PM$}$(Program: JB0010GI?; Screen: JBS0010?)
+
+Delete existing conversion factors for job and suffix
+Copy conversion factors from router to job
+${$1$}$$}$$}$3$}$11151$}$RES010CR-PRE-SAVE-HOOK$}$4/9/2014 3:11:54 PM$}$(Program: RE0010GI; Screen: RES010CR)
+
+Make a copy of all conversion factors for the passed router number
+${$1$}$$}$$}$2$}$11081$}$RES0101-PRE-DELETE-POST-CONFIRM-HOOK$}$4/9/2014 3:08:34 PM$}$(Program: RE0010GI; Screen: RES0101)
+
+Delete all conversion factors for the passed router number
+${$1$}$$}$$}$1$}$11310$}$RES010A-PB-DELETE-HOOK$}$4/9/2014 3:08:01 PM$}$(Program: RE0072; Screen: RES010A)
+
+Delete the conversion factor for the passed router and line
+${$1$}$$}$$}$0$}$11340$}$RES010A-PB-FORMULA-HOOK$}$4/9/2014 3:05:52 PM$}$(Program: RE0072; Screen: RES010A)
+
+Override the standard formula screen with a custom conversion factor screen
+${$3$}$0$}$$}$-1$}$-1$}$$}$1/1/1900$}$GAB script will be fired from router lines, job operations (add or edit), and the GUI screen when updating jobs.
+The script will allow the user to enter a unit of measure, a conversion factor and a total quantity in the selected unit of measure to calculate the number of hours for that sequence.
+Program.Sub.Comments.End
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::UM Conversion Factor
+SS_Form1.CTRL{{NAME::txtUM\\TYPE::2\\CAPTION::Unit of Measure\\TABSTOP::1\\GROUP::-1\\BROWSER::1\\SIZE::1
+SS_Form1.CTRL{{NAME::txtUMPerHour\\TYPE::2\\CAPTION::(UM) Per Hour\\TABSTOP::2\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::txtTotalUM\\TYPE::2\\CAPTION::Total (UM)\\TABSTOP::3\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::cmdSave\\TYPE::5\\CAPTION::Save\\TABSTOP::4\\GROUP::-1\\BROWSER::0\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
