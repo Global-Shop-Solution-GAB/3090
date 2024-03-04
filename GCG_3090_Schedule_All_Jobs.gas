@@ -1,0 +1,46 @@
+Program.Sub.ScreenSU.Start
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+
+V.Local.sParams.Declare(String)
+
+F.Intrinsic.String.Format(V.Ambient.Now,"YYYYMMDD",V.Local.sParams)
+F.Intrinsic.String.Concat("SI!*!",V.Local.sParams,"!*!1",V.Local.sParams)
+F.Intrinsic.UI.InvokeWaitDialog("Downloading Scheduling files...","Status")
+F.Global.General.CallWrapperSync(500000,V.Local.sParams)
+V.Local.sParams.Set("")
+F.Intrinsic.UI.InvokeWaitDialog("Running APS #83...","Status")
+F.Global.General.CallWrapperSync(500010,V.Local.sParams)
+F.Intrinsic.Debug.SetLA("APS 83 called.")
+
+
+'End
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Schedule_All_Jobs.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_Schedule_All_Jobs$}$BSELLERS$}$5/15/2014
+Program.Sub.Comments.End
+
