@@ -1,0 +1,702 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Recalculate Remaining Hours")
+gui.SS_Form1..size(17790,7155)
+gui.SS_Form1..minx(0)
+gui.SS_Form1..miny(0)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,ss_form1_unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.cmdUpdate.create(button)
+gui.SS_Form1.cmdUpdate.caption("Update All")
+gui.SS_Form1.cmdUpdate.visible(True)
+gui.SS_Form1.cmdUpdate.size(1000,360)
+gui.SS_Form1.cmdUpdate.zorder(0)
+gui.SS_Form1.cmdUpdate.position(100,6075)
+gui.SS_Form1.cmdUpdate.enabled(True)
+gui.SS_Form1.cmdUpdate.fontname("Arial")
+gui.SS_Form1.cmdUpdate.fontsize(8)
+gui.SS_Form1.cmdUpdate.event(click,cmdupdate_click)
+gui.SS_Form1.cmdUpdate.defaultvalue("")
+gui.SS_Form1.cmdUpdate.controlgroup(0)
+gui.SS_Form1.gsfgConvFact.create(gsflexgrid)
+gui.SS_Form1.gsfgConvFact.FixedRows(0)
+gui.SS_Form1.gsfgConvFact.FixedCols(0)
+gui.SS_Form1.gsfgConvFact.visible(True)
+gui.SS_Form1.gsfgConvFact.size(17160,5085)
+gui.SS_Form1.gsfgConvFact.zorder(0)
+gui.SS_Form1.gsfgConvFact.position(100,800)
+gui.SS_Form1.gsfgConvFact.enabled(True)
+gui.SS_Form1.lbl1.create(label,"WHERE",True,840,255,1,155,305,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl1.defaultvalue("")
+gui.SS_Form1.lbl1.controlgroup(0)
+gui.SS_Form1.lbl2.create(label,"CONTAINS",True,840,255,1,2800,305,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl2.defaultvalue("")
+gui.SS_Form1.lbl2.controlgroup(0)
+gui.SS_Form1.txtFilter.create(textbox,"",True,1635,300,0,3730,265,True,0,Arial,8,-2147483643,1)
+gui.SS_Form1.txtFilter.defaultvalue("")
+gui.SS_Form1.txtFilter.controlgroup(0)
+gui.SS_Form1.cmdFilter.create(button)
+gui.SS_Form1.cmdFilter.caption("Filter Results")
+gui.SS_Form1.cmdFilter.visible(True)
+gui.SS_Form1.cmdFilter.size(1380,375)
+gui.SS_Form1.cmdFilter.zorder(0)
+gui.SS_Form1.cmdFilter.position(5600,220)
+gui.SS_Form1.cmdFilter.enabled(True)
+gui.SS_Form1.cmdFilter.fontname("Arial")
+gui.SS_Form1.cmdFilter.fontsize(8)
+gui.SS_Form1.cmdFilter.event(click,cmdfilter_click)
+gui.SS_Form1.cmdFilter.defaultvalue("")
+gui.SS_Form1.cmdFilter.controlgroup(0)
+gui.SS_Form1.cmdReLoad.create(button)
+gui.SS_Form1.cmdReLoad.caption("Re-Populate Results")
+gui.SS_Form1.cmdReLoad.visible(True)
+gui.SS_Form1.cmdReLoad.size(1755,375)
+gui.SS_Form1.cmdReLoad.zorder(0)
+gui.SS_Form1.cmdReLoad.position(7200,220)
+gui.SS_Form1.cmdReLoad.enabled(True)
+gui.SS_Form1.cmdReLoad.fontname("Arial")
+gui.SS_Form1.cmdReLoad.fontsize(8)
+gui.SS_Form1.cmdReLoad.event(click,cmdreload_click)
+gui.SS_Form1.cmdReLoad.defaultvalue("")
+gui.SS_Form1.cmdReLoad.controlgroup(0)
+gui.SS_Form1.cmdCheckAll.create(button)
+gui.SS_Form1.cmdCheckAll.caption("Check All")
+gui.SS_Form1.cmdCheckAll.visible(True)
+gui.SS_Form1.cmdCheckAll.size(1485,375)
+gui.SS_Form1.cmdCheckAll.zorder(0)
+gui.SS_Form1.cmdCheckAll.position(15000,220)
+gui.SS_Form1.cmdCheckAll.enabled(True)
+gui.SS_Form1.cmdCheckAll.fontname("Arial")
+gui.SS_Form1.cmdCheckAll.fontsize(8)
+gui.SS_Form1.cmdCheckAll.event(click,cmdcheckall_click)
+gui.SS_Form1.cmdCheckAll.defaultvalue("")
+gui.SS_Form1.cmdCheckAll.controlgroup(0)
+gui.SS_Form1.ddlFilter.create(dropdownlist)
+gui.SS_Form1.ddlFilter.visible(True)
+gui.SS_Form1.ddlFilter.size(1755,330)
+gui.SS_Form1.ddlFilter.zorder(0)
+gui.SS_Form1.ddlFilter.position(890,260)
+gui.SS_Form1.ddlFilter.enabled(True)
+gui.SS_Form1.ddlFilter.fontname("Arial")
+gui.SS_Form1.ddlFilter.fontsize(8)
+gui.SS_Form1.ddlFilter.defaultvalue("")
+gui.SS_Form1.ddlFilter.controlgroup(0)
+gui.SS_Form1.lbl3.create(label,"All Work order sequences listed above will be updated.",True,4035,255,1,1440,6045,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl3.defaultvalue("")
+gui.SS_Form1.lbl3.controlgroup(0)
+gui.SS_Form1.lbl4.create(label,"If 'Use Actual' is not checked the update will use Estimated.",True,4470,255,1,1290,6235,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl4.defaultvalue("")
+gui.SS_Form1.lbl4.controlgroup(0)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.UDT.ConvFact.Define("JOB",String)
+Variable.UDT.ConvFact.Define("SUFFIX",String)
+Variable.UDT.ConvFact.Define("SEQ",String)
+Variable.UDT.ConvFact.Define("WC",String)
+Variable.UDT.ConvFact.Define("UM",String)
+Variable.UDT.ConvFact.Define("ACT_REM_HOURS",Float)
+Variable.UDT.ConvFact.Define("ACT_TOTAL_UM",Float)
+Variable.UDT.ConvFact.Define("ACT_HOUR_PER_UM",Float)
+Variable.UDT.ConvFact.Define("EST_REM_HOURS",Float)
+Variable.UDT.ConvFact.Define("EST_TOTAL_UM",Float)
+Variable.UDT.ConvFact.Define("EST_HOUR_PER_UM",Float)
+Variable.UDT.ConvFact.Define("HOURS_APPLIED",Float)
+Variable.uGlobal.uConvFact.Declare("ConvFact")
+Variable.uGlobal.ucopyConvFact.Declare("ConvFact")
+Variable.Global.bCopy.Declare(Boolean,False)
+Program.Sub.Preflight.End
+
+Program.Sub.BuildStyle.Start
+F.Intrinsic.Control.SetErrorHandler("BuildStyle_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+'JOB, SUFFIX, SEQ, WC, UM, EST_HOUR_PER_UM, EST_TOTAL_UM, EST_REM_HOURS, ACT_HOUR_PER_UM, ACT_TOTAL_UM, ACT_REM_HOURS, USE_ACT
+Gui.SS_Form1.gsfgConvFact.Rows(1)
+Gui.SS_Form1.gsfgConvFact.Cols(13)
+
+Gui.SS_Form1.gsfgConvFact.FixedRows(1)
+Gui.SS_Form1.gsfgConvFact.SetColumnPercentages(".05:.04:.07:.08:.09:.09:.08:.09:.08:.09:.08:.09:.06")
+
+'JOB
+Gui.SS_Form1.gsfgConvFact.TextMatrix(0,0,"Job")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,0,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,0,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,0,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,0,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,0,"format","alignment",4)
+
+'SUFFIX
+Gui.SS_Form1.gsfgConvFact.TextMatrix(1,0,"Suffix")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,1,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,1,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,1,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,1,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,1,"format","alignment",4)
+
+'SEQ
+Gui.SS_Form1.gsfgConvFact.TextMatrix(2,0,"Sequence")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,2,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,2,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,2,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,2,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,2,"format","alignment",4)
+
+'WC
+Gui.SS_Form1.gsfgConvFact.TextMatrix(3,0,"Work Center")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,3,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,3,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,3,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,3,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,3,"format","alignment",4)
+
+'UM
+Gui.SS_Form1.gsfgConvFact.TextMatrix(4,0,"Unit Of Measure")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,4,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,4,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,4,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,4,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,4,"format","alignment",4)
+
+'EST_HOUR_PER_UM
+Gui.SS_Form1.gsfgConvFact.TextMatrix(5,0,"Est UM Per Hour")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,5,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,5,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,5,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,5,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,5,"format","alignment",4)
+
+'EST_TOTAL_UM
+Gui.SS_Form1.gsfgConvFact.TextMatrix(6,0,"Est Total UM")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,6,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,6,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,6,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,6,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,6,"format","alignment",4)
+
+'EST_REM_HOURS
+Gui.SS_Form1.gsfgConvFact.TextMatrix(7,0,"Est Rem Hours")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,7,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,7,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,7,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,7,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,7,"format","alignment",4)
+
+'HOURS_APPLIED
+Gui.SS_Form1.gsfgConvFact.TextMatrix(8,0,"Hours Applied")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,8,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,8,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,8,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,8,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,8,"format","alignment",4)
+
+'ACT_HOUR_PER_UM
+Gui.SS_Form1.gsfgConvFact.TextMatrix(9,0,"Act UM Per Hour")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,9,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,9,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,9,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,9,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,9,"format","alignment",4)
+
+'ACT_TOTAL_UM
+Gui.SS_Form1.gsfgConvFact.TextMatrix(10,0,"Act Total UM")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,10,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,10,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,10,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,10,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,10,"format","alignment",4)
+
+'ACT_REM_HOURS
+Gui.SS_Form1.gsfgConvFact.TextMatrix(11,0,"Act Rem Hours")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,11,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,11,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,11,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,11,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,11,"format","alignment",4)
+
+'USE_ACT
+Gui.SS_Form1.gsfgConvFact.TextMatrix(12,0,"Use Act?")
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,12,"type","locked",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,12,"format","alignment",4)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(1,12,"fontstyle","bold",True)
+
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,12,"type","Checkbox",True)
+Gui.SS_Form1.gsfgConvFact.BuildStyle(2,12,"format","alignment",4)
+
+Gui.SS_Form1.gsfgConvFact.ApplyStyle(0,1)
+
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("BuildStyle_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.BuildStyle.End
+
+program.sub.cmdupdate_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdupdate_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+V.Local.iCount.Declare(Long)
+V.Local.iRows.Declare(Long)
+V.Local.sRet.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.fTemp.Declare(Float)
+
+V.Local.fHoursRem.Declare(String)
+
+
+V.Local.iRows.Set(V.Screen.SS_Form1!gsfgConvFact.Rows)
+
+F.Intrinsic.Math.Sub(V.Local.iRows,1,V.Local.iRows)
+
+F.Intrinsic.UI.InvokeWaitDialog("Updating Job Operations...","Status")
+
+F.Intrinsic.Control.For(V.Local.iCount,1,V.Local.iRows,1)
+	F.Intrinsic.UI.ChangeWaitStatus("Progress...",V.Local.iCount,1,V.Local.iRows)
+	
+	Gui.SS_Form1.gsfgConvFact.ReadRow(V.Local.iCount,V.Local.sRet)
+	
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	
+	F.Intrinsic.Control.If(V.Local.sRet(12),=,"1")
+		F.Intrinsic.Math.ConvertToFloat(V.Local.sRet(11),V.Local.fHoursRem)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Math.ConvertToFloat(V.Local.sRet(7),V.Local.fHoursRem)
+	F.intrinsic.Control.EndIf
+
+	F.Intrinsic.String.Concat("Select SETUP, UNITS, HOURS_ESTIMATED, HOURS_ACTUAL From JOB_OPERATIONS Where JOB = '",V.Local.sRet(0),"' And SUFFIX = '",V.Local.sRet(1),"' And SEQ = '",V.Local.sRet(2),"'",V.Local.sSql)
+	F.ODBC.Connection!conx.OpenRecordsetRW("rst",V.Local.sSql)
+	F.Intrinsic.Control.if(V.ODBC.conx!rst.EOF,=,False)
+		F.Intrinsic.Math.Sub(V.ODBC.conx!rst.FieldValFloat!HOURS_ACTUAL,V.ODBC.conx!rst.FieldValFloat!SETUP,V.Local.fTemp)
+		F.Intrinsic.Math.Add(V.Local.fHoursRem,V.Local.fTemp,V.Local.fTemp)
+		F.ODBC.conx!rst.Set!UNITS(V.Local.fTemp)
+		F.Intrinsic.Math.Add(V.Local.fTemp,V.ODBC.conx!rst.FieldValFloat!SETUP,V.Local.fTemp)
+		F.ODBC.conx!rst.Set!HOURS_ESTIMATED(V.Local.fTemp)
+		F.ODBC.conx!rst.update
+	F.intrinsic.Control.EndIf
+	F.ODBC.conx!rst.Close
+	
+F.Intrinsic.Control.Next(V.Local.iCount)
+
+
+F.Intrinsic.Control.CallSub(Ss_form1_unload)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdupdate_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdupdate_click.end
+
+program.sub.ss_form1_unload.start
+F.Intrinsic.Control.SetErrorHandler("ss_form1_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+F.ODBC.Connection!conx.Close
+F.Intrinsic.Control.End
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ss_form1_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.ss_form1_unload.end
+
+Program.Sub.Main.Start
+'8/9/19 - DD - Changed tables to align with current sql table structure (GCG_3090_CONV_ROUT & GCG_3090_CONV_WO).  Also changed UM_PER_HOUR column name to HOUR_PER_UM to align with current sql manifests.
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+
+
+F.Intrinsic.Control.CallSub(Buildstyle)
+F.Intrinsic.Control.CallSub(Loadgsfg)
+
+'Type Drop Down
+Gui.SS_Form1.ddlFilter.AddItem("Job")
+Gui.SS_Form1.ddlFilter.AddItem("Suffix")
+Gui.SS_Form1.ddlFilter.AddItem("Sequence")
+
+Gui.SS_Form1..Show
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+Program.Sub.LoadGSFG.Start
+F.Intrinsic.Control.SetErrorHandler("LoadGSFG_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+V.Local.iub.Declare(Long)
+V.Local.sSql.Declare(String)
+V.Local.fRemainingUM.Declare(Float)
+
+V.Local.sSql.Set("Select CF.JOB, CF.SUFFIX, CF.SEQ, CF.UM, CF.HOUR_PER_UM, CF.TOTAL_UM, JO.UNITS_COMPLETE, JO.HOURS_ACTUAL, JO.PART")
+F.Intrinsic.String.Concat(V.Local.sSql," From GCG_3090_CONV_WO CF Left Outer Join V_JOB_OPERATIONS JO",V.Local.sSql)
+F.Intrinsic.String.Concat(V.Local.sSql," On JO.JOB = CF.JOB And JO.SUFFIX = CF.SUFFIX And JO.SEQ = CF.SEQ",V.Local.sSql)
+F.Intrinsic.String.Concat(V.Local.sSql," Where JO.WORK_STARTED = 'Y' And JO.FLAG_CLOSED <> 'Y'",V.Local.sSql)
+'OpenRecordSet
+F.odbc.Connection!conx.OpenRecordsetRO("rst",V.Local.sSql)
+
+
+'Empty UDT
+V.uGlobal.uConvFact.Redim(-1,-1)
+V.Local.iub.Set(-1)
+
+'Loop through the record set and add each record to the UDT
+F.Intrinsic.Control.DoUntil(V.ODBC.conx!rst.EOF,=,True)
+
+	
+	F.Intrinsic.Control.If(V.uGlobal.uConvFact.UBound,=,-1)
+		V.uGlobal.uConvFact.Redim(0,0)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Math.Add(V.Local.iub,1,V.Local.iub)
+	V.uGlobal.uConvFact.RedimPreserve(0,V.Local.iub)
+	
+	V.uGlobal.uConvFact(v.Local.iub)!JOB.Set(V.ODBC.conx!rst.FieldValRTrim!JOB)
+	V.uGlobal.uConvFact(v.Local.iub)!SUFFIX.Set(V.ODBC.conx!rst.FieldValRTrim!SUFFIX)
+	V.uGlobal.uConvFact(v.Local.iub)!SEQ.Set(V.ODBC.conx!rst.FieldValRTrim!SEQ)
+	V.uGlobal.uConvFact(v.Local.iub)!WC.Set(V.ODBC.conx!rst.FieldValRTrim!PART)
+	V.uGlobal.uConvFact(v.Local.iub)!UM.Set(V.ODBC.conx!rst.FieldValRTrim!UM)
+	V.uGlobal.uConvFact(v.Local.iub)!EST_HOUR_PER_UM.Set(V.ODBC.conx!rst.FieldValFloat!HOUR_PER_UM)
+	V.uGlobal.uConvFact(v.Local.iub)!EST_TOTAL_UM.Set(V.ODBC.conx!rst.FieldValFloat!TOTAL_UM)
+	V.uGlobal.uConvFact(v.Local.iub)!ACT_TOTAL_UM.Set(V.ODBC.conx!rst.FieldValFloat!UNITS_COMPLETE)
+	V.uGlobal.uConvFact(v.Local.iub)!HOURS_APPLIED.Set(V.ODBC.conx!rst.FieldValFloat!HOURS_ACTUAL)
+
+	F.Intrinsic.Math.Sub(V.uGlobal.uConvFact(v.Local.iub)!EST_TOTAL_UM,V.uGlobal.uConvFact(v.Local.iub)!ACT_TOTAL_UM,V.Local.fRemainingUM)
+	F.Intrinsic.Math.Mult(V.uGlobal.uConvFact(v.Local.iub)!EST_HOUR_PER_UM,V.Local.fRemainingUM,V.uGlobal.uConvFact(v.Local.iub)!EST_REM_HOURS)
+	
+
+	F.Intrinsic.Control.If(V.uGlobal.uConvFact(v.Local.iub)!ACT_TOTAL_UM,<>,0)
+		F.Intrinsic.Math.Div(V.uGlobal.uConvFact(v.Local.iub)!HOURS_APPLIED,V.uGlobal.uConvFact(v.Local.iub)!ACT_TOTAL_UM,V.uGlobal.uConvFact(v.Local.iub)!ACT_HOUR_PER_UM)
+	F.Intrinsic.Control.Else
+		V.uGlobal.uConvFact(v.Local.iub)!ACT_HOUR_PER_UM.Set(0)
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Math.Mult(V.uGlobal.uConvFact(v.Local.iub)!ACT_HOUR_PER_UM,V.Local.fRemainingUM,V.uGlobal.uConvFact(v.Local.iub)!ACT_REM_HOURS)
+	
+	F.Intrinsic.Math.Round(V.uGlobal.uConvFact(v.Local.iub)!ACT_REM_HOURS,2,V.uGlobal.uConvFact(v.Local.iub)!ACT_REM_HOURS)
+	F.Intrinsic.Math.Round(V.uGlobal.uConvFact(v.Local.iub)!ACT_TOTAL_UM,2,V.uGlobal.uConvFact(v.Local.iub)!ACT_TOTAL_UM)
+	F.Intrinsic.Math.Round(V.uGlobal.uConvFact(v.Local.iub)!ACT_HOUR_PER_UM,2,V.uGlobal.uConvFact(v.Local.iub)!ACT_HOUR_PER_UM)
+	F.Intrinsic.Math.Round(V.uGlobal.uConvFact(v.Local.iub)!EST_REM_HOURS,2,V.uGlobal.uConvFact(v.Local.iub)!EST_REM_HOURS)
+	F.Intrinsic.Math.Round(V.uGlobal.uConvFact(v.Local.iub)!EST_TOTAL_UM,2,V.uGlobal.uConvFact(v.Local.iub)!EST_TOTAL_UM)
+	F.Intrinsic.Math.Round(V.uGlobal.uConvFact(v.Local.iub)!EST_HOUR_PER_UM,2,V.uGlobal.uConvFact(v.Local.iub)!EST_HOUR_PER_UM)
+
+	F.ODBC.conx!rst.MoveNext
+	
+F.Intrinsic.Control.Loop
+F.ODBC.conx!rst.close
+
+'Populate the Flex Grid from the UDT
+Gui.SS_Form1.gsfgConvFact.LoadFromUDT("v.uGlobal.uConvFact","JOB*!*SUFFIX*!*SEQ*!*WC*!*UM*!*EST_HOUR_PER_UM*!*EST_TOTAL_UM*!*EST_REM_HOURS*!*HOURS_APPLIED*!*ACT_HOUR_PER_UM*!*ACT_TOTAL_UM*!*ACT_REM_HOURS",2)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadGSFG_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.LoadGSFG.End
+
+program.sub.cmdfilter_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdfilter_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+V.Local.iub.Declare(Long)
+V.Local.sWhere.Declare(String)
+V.Local.sVal.Declare(String)
+V.Local.sStatement.Declare(String)
+
+Gui.SS_Form1.gsfgConvFact.Visible(False)
+
+V.Local.sVal.set(V.Screen.SS_Form1!txtFilter.Text)
+
+F.Intrinsic.String.Concat("LIKE::",V.Local.sVal.Trim,"*",V.Local.sVal)
+
+'Make copy of Asset UDT
+F.Intrinsic.Control.If(V.Global.bCopy,=,False)
+	F.Intrinsic.Variable.UDTCopy(V.uGlobal.uConvFact,V.uGlobal.ucopyConvFact,False)
+F.Intrinsic.Control.EndIf
+
+'Flag all items in UDT
+F.Intrinsic.Variable.UDTFlagAll(V.uGlobal.ucopyConvFact)
+
+'Unflag items that match search criteria
+F.Intrinsic.Control.SelectCase(V.Screen.SS_Form1!ddlFilter.Text)
+	F.Intrinsic.Control.Case("Job")
+		F.Intrinsic.Variable.UDTMultiunFlag(V.uGlobal.ucopyConvFact!JOB,V.Local.sVal)
+	F.Intrinsic.Control.Case("Suffix")
+		F.Intrinsic.Variable.UDTMultiunFlag(V.uGlobal.ucopyConvFact!SUFFIX,V.Local.sVal)
+	F.Intrinsic.Control.Case("Sequence")
+		F.Intrinsic.Variable.UDTMultiunFlag(V.uGlobal.ucopyConvFact!SEQ,V.Local.sVal)
+	F.Intrinsic.Control.CaseElse
+		F.Intrinsic.Variable.UDTUnFlagAll(V.uGlobal.ucopyConvFact)
+F.Intrinsic.Control.EndSelect
+
+'Delete flagged items from the UDT
+F.Intrinsic.Variable.UDTDeleteFlagged(V.uGlobal.ucopyConvFact)
+
+'Load grid from UDT
+Gui.SS_Form1.gsfgConvFact.LoadFromUDT("v.uGlobal.ucopyConvFact","JOB*!*SUFFIX*!*SEQ*!*WC*!*UM*!*EST_HOUR_PER_UM*!*EST_TOTAL_UM*!*EST_REM_HOURS*!*HOURS_APPLIED*!*ACT_HOUR_PER_UM*!*ACT_TOTAL_UM*!*ACT_REM_HOURS",2)
+V.Global.bCopy.Set(True)
+
+Gui.SS_Form1.cmdCheckAll.Caption("Check All")
+F.Intrinsic.Control.CallSub(Uncheckall)
+
+Gui.SS_Form1.gsfgConvFact.Visible(True)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdfilter_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdfilter_click.end
+
+program.sub.cmdreload_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdreload_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+
+Gui.SS_Form1.txtFilter.Text("")
+Gui.SS_Form1.ddlFilter.Text("")
+
+V.Global.bCopy.Set(False)
+Gui.SS_Form1.gsfgConvFact.Visible(False)
+
+Gui.SS_Form1.gsfgConvFact.LoadFromUDT("v.uGlobal.uConvFact","JOB*!*SUFFIX*!*SEQ*!*WC*!*UM*!*EST_HOUR_PER_UM*!*EST_TOTAL_UM*!*EST_REM_HOURS*!*HOURS_APPLIED*!*ACT_HOUR_PER_UM*!*ACT_TOTAL_UM*!*ACT_REM_HOURS",2)
+
+Gui.SS_Form1.cmdCheckAll.Caption("Check All")
+F.Intrinsic.Control.CallSub(Uncheckall)
+
+Gui.SS_Form1.gsfgConvFact.Visible(True)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdreload_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdreload_click.end
+
+program.sub.cmdcheckall_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdcheckall_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+Gui.SS_Form1.gsfgConvFact.Visible(False)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!cmdCheckAll.Caption,=,"Check All")
+	Gui.SS_Form1.cmdCheckAll.Caption("Un-Check All")
+	F.Intrinsic.Control.CallSub(Checkall)
+F.Intrinsic.Control.ElseIf(V.Screen.SS_Form1!cmdCheckAll.Caption,=,"Un-Check All")
+	Gui.SS_Form1.cmdCheckAll.Caption("Check All")
+	F.Intrinsic.Control.CallSub(Uncheckall)
+F.Intrinsic.Control.EndIf
+
+Gui.SS_Form1.gsfgConvFact.Visible(True)
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdcheckall_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdcheckall_click.end
+
+Program.Sub.UncheckAll.Start
+F.Intrinsic.Control.SetErrorHandler("Uncheckall_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+V.Local.iCount.Declare(Long)
+V.Local.iRows.Declare(Long)
+
+V.Local.iRows.Set(V.Screen.SS_Form1!gsfgConvFact.Rows)
+F.Intrinsic.Math.Sub(V.Local.iRows,1,V.Local.iRows)
+
+F.Intrinsic.Control.For(V.Local.iCount,1,V.Local.iRows,1)
+	Gui.SS_Form1.gsfgConvFact.TextMatrix(12,V.local.iCount,"0")
+F.Intrinsic.Control.Next(V.Local.iCount)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Uncheckall_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.UncheckAll.End
+
+Program.Sub.CheckAll.Start
+F.Intrinsic.Control.SetErrorHandler("Checkall_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Start
+V.Local.iCount.Declare(Long)
+V.Local.iRows.Declare(Long)
+
+V.Local.iRows.Set(V.Screen.SS_Form1!gsfgConvFact.Rows)
+F.Intrinsic.Math.Sub(V.Local.iRows,1,V.Local.iRows)
+
+F.Intrinsic.Control.For(V.Local.iCount,1,V.Local.iRows,1)
+	Gui.SS_Form1.gsfgConvFact.TextMatrix(12,V.local.iCount,"1")
+F.Intrinsic.Control.Next(V.Local.iCount)
+
+'End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Checkall_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_UM_Conv_Factor.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.CheckAll.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_UM_Conv_Factor$}$BSELLERS$}$4/29/2014
+Program.Sub.Comments.End
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::Recalculate Remaining Hours
+SS_Form1.CTRL{{NAME::cmdUpdate\\TYPE::5\\CAPTION::Update All\\GROUP::-1\\BROWSER::0\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
